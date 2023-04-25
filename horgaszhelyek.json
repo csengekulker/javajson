@@ -1,0 +1,204 @@
+{
+    "fishingspots": [
+      {
+        "id": 1,
+        "name": "Bátori Dániel",
+        "spot": 35,
+        "date": "2023-04-17",
+        "rods": 3,
+        "paid": true
+      },
+      {
+        "id": 2,
+        "name": "Szeredi Petra",
+        "spot": 23,
+        "date": "2023-04-19",
+        "rods": 3,
+        "paid": true
+      },
+      {
+        "id": 3,
+        "name": "Kovács Richárd",
+        "spot": 20,
+        "date": "2023-04-19",
+        "rods": 6,
+        "paid": false
+      },
+      {
+        "id": 4,
+        "name": "Tóth Zoltán",
+        "spot": 35,
+        "date": "2023-04-22",
+        "rods": 6,
+        "paid": true
+      },
+      {
+        "id": 5,
+        "name": "Szekeres Katalin",
+        "spot": 2,
+        "date": "2023-04-22",
+        "rods": 3,
+        "paid": false
+      },
+      {
+        "id": 6,
+        "name": "Horváth Bence",
+        "spot": 5,
+        "date": "2023-04-22",
+        "rods": 3,
+        "paid": true
+      },
+      {
+        "id": 7,
+        "name": "Nagy Zsófia",
+        "spot": 8,
+        "date": "2023-04-22",
+        "rods": 7,
+        "paid": true
+      },
+      {
+        "id": 8,
+        "name": "Farkas Gergő",
+        "spot": 1,
+        "date": "2023-04-22",
+        "rods": 3,
+        "paid": true
+      },
+      {
+        "id": 9,
+        "name": "Balázs Máté",
+        "spot": 5,
+        "date": "2023-04-22",
+        "rods": 4,
+        "paid": false
+      },
+      {
+        "id": 10,
+        "name": "Kiss Emese",
+        "spot": 1,
+        "date": "2023-04-23",
+        "rods": 3,
+        "paid": true
+      },
+      {
+        "id": 11,
+        "name": "Molnár Tamás",
+        "spot": 35,
+        "date": "2023-04-23",
+        "rods": 3,
+        "paid": true
+      },
+      {
+        "id": 12,
+        "name": "Varga Viktória",
+        "spot": 34,
+        "date": "2023-04-23",
+        "rods": 4,
+        "paid": false
+      },
+      {
+        "id": 13,
+        "name": "Győri Levente",
+        "spot": 35,
+        "date": "2023-04-23",
+        "rods": 3,
+        "paid": false
+      },
+      {
+        "id": 14,
+        "name": "Lakatos Anna",
+        "spot": 29,
+        "date": "2023-04-23",
+        "rods": 3,
+        "paid": true
+      },
+      {
+        "id": 15,
+        "name": "Papp Gábor",
+        "spot": 21,
+        "date": "2023-04-23",
+        "rods": 8,
+        "paid": false
+      },
+      {
+        "id": 16,
+        "name": "Simon Réka",
+        "spot": 18,
+        "date": "2023-04-23",
+        "rods": 6,
+        "paid": true
+      },
+      {
+        "id": 17,
+        "name": "Juhász Norbert",
+        "spot": 15,
+        "date": "2023-04-23",
+        "rods": 3,
+        "paid": true
+      },
+      {
+        "id": 18,
+        "name": "Mészáros Enikő",
+        "spot": 18,
+        "date": "2023-04-23",
+        "rods": 3,
+        "paid": false
+      },
+      {
+        "id": 19,
+        "name": "Nagy Bálint",
+        "spot": 16,
+        "date": "2023-04-29",
+        "rods": 3,
+        "paid": true
+      },
+      {
+        "id": 20,
+        "name": "Kovács Katalin",
+        "spot": 35,
+        "date": "2023-04-29",
+        "rods": 3,
+        "paid": true
+      },
+      {
+        "id": 21,
+        "name": "Tóth Bence",
+        "spot": 35,
+        "date": "2023-04-29",
+        "rods": 8,
+        "paid": false
+      },
+      {
+        "id": 22,
+        "name": "Szabó Laura",
+        "spot": 25,
+        "date": "2023-04-30",
+        "rods": 3,
+        "paid": true
+      },
+      {
+        "id": 23,
+        "name": "Fehér Gábor",
+        "spot": 12,
+        "date": "2023-04-30",
+        "rods": 8,
+        "paid": true
+      },
+      {
+        "id": 24,
+        "name": "Váradi Dorottya",
+        "spot": 11,
+        "date": "2023-04-30",
+        "rods": 3,
+        "paid": true
+      },
+      {
+        "id": 25,
+        "name": "Bánhegyi Péter",
+        "spot": 17,
+        "date": "2023-04-30",
+        "rods": 6,
+        "paid": false
+      }
+    ]
+}
