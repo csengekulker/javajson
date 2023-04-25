@@ -1,32 +1,26 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 
 public class MainConsole {
 
     ArrayList<FishingSpot> fishingSpotArray;
     
     public MainConsole() { 
-        consumeJsonFile();
-        test();
+        readJsonStream();
+        writeJsonStream();
     }
     
-    public void consumeJsonFile() { 
+    public void readJsonStream() { 
         try {
-            tryConsumeJsonFile();
+            tryReadJsonStream();
         } catch (FileNotFoundException e) {
            System.err.println(e);
         } catch (IOException e) {
@@ -34,7 +28,7 @@ public class MainConsole {
          }
     }
 
-    public void tryConsumeJsonFile() throws FileNotFoundException, IOException { 
+    public void tryReadJsonStream() throws FileNotFoundException, IOException { 
         File file = new File("horgaszhelyek.json");
         JsonReader jsonReader = new JsonReader(new FileReader(file));
 
@@ -81,10 +75,46 @@ public class MainConsole {
 
     }
 
-    public void test() { 
-        
-        for (FishingSpot spot : fishingSpotArray) { 
-            System.out.println(spot.name);
+    public void writeJsonStream() {
+        try {
+            tryWriteJsonStream();
+        } catch (IOException e) {
+            System.err.println(e);
         }
     }
+
+    public void tryWriteJsonStream() throws IOException { 
+        JsonWriter jsonWriter = new JsonWriter(new FileWriter("fizetetlen.json", false));
+        jsonWriter.setIndent("  ");
+        writeSpotsArray(jsonWriter, fishingSpotArray);
+        jsonWriter.close();
+        
+
+    }
+
+    public void writeSpotsArray(JsonWriter writer, ArrayList<FishingSpot> spots) throws IOException {
+        writer.beginArray();
+
+        for (FishingSpot spot : fishingSpotArray) { 
+            if (!spot.paid) {
+                writeSpot(writer, spot);
+            }
+        }
+
+        writer.endArray();
+
+    }
+
+    public void writeSpot(JsonWriter writer, FishingSpot spot) throws IOException {
+        writer.beginObject();
+        writer.name("id").value(spot.getId());
+        writer.name("name").value(spot.getName());
+        writer.name("spot").value(spot.getSpot());
+        writer.name("date").value(spot.getDate().toString());
+        writer.name("rods").value(spot.getRods());
+        writer.name("paid").value(spot.isPaid());
+        
+        writer.endObject();
+
+    } 
 }
