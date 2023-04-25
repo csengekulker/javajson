@@ -2,6 +2,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -15,17 +16,17 @@ import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
 
 public class MainConsole {
+
+    ArrayList<FishingSpot> fishingSpotArray;
     
     public MainConsole() { 
-        System.out.println("------------");
-        readFile();
-        System.out.println("------------");
-        // convertJsonToList();
+        consumeJsonFile();
+        test();
     }
     
-    public void readFile() { 
+    public void consumeJsonFile() { 
         try {
-            tryReadFile();
+            tryConsumeJsonFile();
         } catch (FileNotFoundException e) {
            System.err.println(e);
         } catch (IOException e) {
@@ -33,53 +34,56 @@ public class MainConsole {
          }
     }
 
-    public void tryReadFile() throws FileNotFoundException, IOException { 
-        StringBuilder stringBuilder = new StringBuilder();
+    public void tryConsumeJsonFile() throws FileNotFoundException, IOException { 
         File file = new File("horgaszhelyek.json");
-        Scanner sc = new Scanner(file, "UTF-8");
-
         JsonReader jsonReader = new JsonReader(new FileReader(file));
 
-        jsonReader.beginObject();
-        jsonReader.nextName();
-        // jsonReader.nextString();
-        jsonReader.beginArray();
-        jsonReader.beginObject();
+        this.fishingSpotArray = new ArrayList<>();
 
-        System.out.println(jsonReader.nextName());
-        // while(jsonReader.hasNext()) { 
-        //     System.out.println("hely");
-        // }
-        System.out.println(jsonReader.getPath());
-        System.out.println(jsonReader.peek());
-        
-        sc.close();
+
+        jsonReader.beginObject(); // {
+        jsonReader.nextName(); // "fishingspots"
+        jsonReader.beginArray(); // [
+
+        while (jsonReader.hasNext()) {
+            jsonReader.beginObject(); // { 
+            jsonReader.nextName();
+            int id = jsonReader.nextInt();
+            jsonReader.nextName();
+
+            String name = jsonReader.nextString();
+            jsonReader.nextName();
+
+            int spot = jsonReader.nextInt();
+            jsonReader.nextName();
+
+            LocalDate date = LocalDate.parse(jsonReader.nextString()); //toLocalDate
+            jsonReader.nextName();
+
+            int rods = jsonReader.nextInt();
+            jsonReader.nextName();
+
+            boolean paid = jsonReader.nextBoolean();
+            jsonReader.endObject();
+
+            FishingSpot fishingSpot = new FishingSpot(
+                id, 
+                name, 
+                spot, 
+                date, 
+                rods, 
+                paid);
+
+            this.fishingSpotArray.add(fishingSpot);
+
+        }
+
+
     }
 
-    public void convertJsonToList() { 
-        GsonBuilder gsonBuilder = new GsonBuilder();
-        Gson gson = gsonBuilder.create();
-
-        JsonObject jsonObject = new JsonObject();
-
-        JsonArray jsonArray = new JsonArray();
-        jsonObject.add("fishingspots", jsonArray);
-        jsonArray.add(jsonObject.getAsJsonArray("fishingspots"));
-
-        List<JsonElement> list = jsonArray.asList();
-
-        System.out.println(jsonArray.get(1));
+    public void test() { 
         
-
-
-        FishingSpot[] spots = gson.fromJson(jsonArray, FishingSpot[].class);
-
-        ArrayList<FishingSpot> spotList =
-            new ArrayList<>(Arrays.asList(spots));
-
-        System.out.println(spots);
-
-        for (FishingSpot spot : spotList) { 
+        for (FishingSpot spot : fishingSpotArray) { 
             System.out.println(spot.name);
         }
     }
